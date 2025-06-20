@@ -1,0 +1,53 @@
+.favorites {
+  padding: 2.5rem 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #1a202c;
+  color: #edf2f7;
+}
+
+.favorites h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2.2rem;
+  color: #e2e8f0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.favorites-empty {
+  text-align: center;
+  padding: 3rem 2rem;
+  background-color: #2d3748;
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 600px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.favorites-empty h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #f56565; /* theme red */
+}
+
+.favorites-empty p {
+  color: #a0aec0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Animation for new favorites being added */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.movies-grid > * {
+  animation: fadeIn 0.3s ease-out forwards;
+}

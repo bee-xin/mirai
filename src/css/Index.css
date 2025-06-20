@@ -1,0 +1,103 @@
+:root {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: #e2e8f0; /* light gray-blue for readability */
+  background-color: #1e1e2f; /* deep indigo-gray background */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  background-color: inherit;
+  color: inherit;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  font-weight: 500;
+  color: #7f9cf5; /* soft indigo */
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+a:hover {
+  color: #a3bffa;
+}
+
+h1 {
+  font-size: 3em;
+  line-height: 1.2;
+  color: #edf2f7;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #2d3748; /* dark slate */
+  color: #edf2f7;
+  cursor: pointer;
+  transition: background-color 0.25s, border-color 0.25s;
+}
+button:hover {
+  background-color: #4a5568;
+  border-color: #7f9cf5;
+}
+button:focus,
+button:focus-visible {
+  outline: 3px solid #7f9cf5;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #1a202c;
+    background-color: #f7fafc;
+  }
+  a {
+    color: #3754d8;
+  }
+  a:hover {
+    color: #5f78ff;
+  }
+  h1 {
+    color: #2d3748;
+  }
+  button {
+    background-color: #edf2f7;
+    color: #1a202c;
+  }
+  button:hover {
+    background-color: #e2e8f0;
+    border-color: #3754d8;
+  }
+}
