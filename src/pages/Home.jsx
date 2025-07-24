@@ -1,32 +1,49 @@
 import MovieCard from "../components/MovieCard";
 import { useState, useEffect } from "react";
 import "../css/Home.css";
-import { getPopularMovies } from "../services/api";
+import {searchMovies, getPopularMovies} from "../services/api"
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [movies,setMovies]=useState([]);
+  const [error, setError]=useState(null);
+  const [loading, setLoading]=useState(true);
 
-  useEffect(() => {
-    const loadPopularMovies = async () => {
-      try {
-        const popularMovies = await getPopularMovies();
-        setMovies(popularMovies);
-      } catch (err) {
-        console.log(err);
-        setError("Failed to load Movies");
-      } finally {
-        setLoading(false);
-      }
-    };
+useEffect(()=>{
+  const loadPopularMovies = async()=>{
+    try{
+      const popularMovies = await getPopularMovies()
+      setMovies(popularMovies)
+    }
+    catch(err){
+      console.log(err);
+      setError("Failed to load error")
+    }
+    finally{
+      setLoading(false);
+    }
+  }
     loadPopularMovies();
-  }, []);
+}, []);
 
-  const handleSearch = (e) => {
+
+  const handleSearch = async (e) => {
     e.preventDefault();
-    alert(searchQuery);
-  };
+    if(!searchQuery.trim())return
+    if(loading)return
+    setLoading(true)
+    try{
+      const searchResults = await searchMovies(searchQuery)
+      setMovies(searchResults)
+      setError(null)
+    }
+    catch(error){
+      console.log(error)
+      setError("Failed to search movies....")
+    }
+    finally{
+      setLoading(false);
+    }
+    };
   return (
     <div className="home ">
       <form onSubmit={handleSearch} className="search-form">

@@ -1,8 +1,19 @@
 import "../css/MovieCard.css";
+import { useMovieContext } from "../hooks/useMovieContext";
+
 const MovieCard = ({ movie }) => {
-  const onFavorite = () => {
-    alert("Clicked");
-  };
+  const { isFavorite, addToFavorites, removeFromFavorites } = useMovieContext();
+  const favorite = isFavorite(movie.id);
+
+  function onFavoriteClick(e) {
+    e.preventDefault();
+    if (favorite) {
+      removeFromFavorites(movie.id);
+    } else {
+      addToFavorites(movie);
+    }
+  }
+
   return (
     <div className="movie-card">
       <div className="movie-poster">
@@ -11,12 +22,14 @@ const MovieCard = ({ movie }) => {
           alt={movie.title}
         />
         <div className="movie-overlay">
-          <button className="favorite-btn" onClick={onFavorite}>
+          <button
+            className={`favorite-btn ${isFavorite(movie.id) ? "active" : ""}`}
+            onClick={onFavoriteClick}
+          >
             <svg
-              width="24"
-              height="24"
+              xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
-              fill="none"
+              fill={isFavorite(movie.id) ? "red" : "none"}
               stroke="currentColor"
               strokeWidth="2"
             >
@@ -32,4 +45,5 @@ const MovieCard = ({ movie }) => {
     </div>
   );
 };
+
 export default MovieCard;
